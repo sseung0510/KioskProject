@@ -1,0 +1,48 @@
+package com.example.kiosk.lv4;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class MenuData {
+
+    public List<Menu> selectData() {
+        List<Menu> menuList = new ArrayList<>();
+
+        Menu menu = new Menu("메인"
+                , Arrays.asList(
+                new MenuItem("1. 햄버거"),
+                new MenuItem("2. 음료수"),
+                new MenuItem("3. 디저트"))
+        );
+
+        Menu burger = new Menu("햄버거"
+                , Arrays.asList(
+                new MenuItem("1. 쉑쉑버거", 6.9, "토마토, 양상추, 쉑소스가 토핑된 치즈버거"),
+                new MenuItem("2. 새우버거", 8.9, "베이컨, 체리 페퍼에 쉑소스가 토핑된 치즈버거"),
+                new MenuItem("3. 치즈버거", 6.9, "포테이토 번과 비프패티, 치즈가 토핑된 치즈버거"),
+                new MenuItem("4. 치킨버거", 5.4, "비프패티를 기반으로 야채가 들어간 기본버거"))
+        );
+
+        Menu drink = new Menu("음료수"
+                , Arrays.asList(
+                new MenuItem("1. 콜라", 2.0, "톡 쏘는 콜라"),
+                new MenuItem("2. 환타", 2.0, "톡 쏘는 파인애플맛"),
+                new MenuItem("3. 사이다", 2.0, "톡 쏘는 사이다"))
+        );
+
+        Menu dessert = new Menu("디저트"
+                , Arrays.asList(
+                new MenuItem("1. 푸딩", 3.5, "아이들이 좋아하는 푸딩"),
+                new MenuItem("2. 파르페", 6.0, "바삭바삭 과자와 달달한 아이스크림"),
+                new MenuItem("3. 아포카토", 5.0, "커피와 어울리는 달달한 아이스크림"))
+        );
+
+        menuList.add(menu);
+        menuList.add(burger);
+        menuList.add(drink);
+        menuList.add(dessert);
+
+        return menuList;
+    }
+}
