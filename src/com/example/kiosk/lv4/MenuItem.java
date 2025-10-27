@@ -5,7 +5,7 @@ package com.example.kiosk.lv4;
  */
 public class MenuItem {
 
-    // 기능
+    // 속성
     private final String name;
     private double price;
     private String description;
