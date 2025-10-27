@@ -10,14 +10,12 @@ public class Menu {
 
     // 속성
     private final String category;
-    private final List<MenuItem> menuList = new ArrayList<>();
+    private final List<MenuItem> menuItemList = new ArrayList<>();
 
     // 생성자
     public Menu(String category, List<MenuItem> menuItems) {
         this.category = category;
-        for(MenuItem menuItem : menuItems) { // 리스트로 한번에 들어온 값을 menuList에 추가
-            this.menuList.add(menuItem);
-        }
+        this.menuItemList.addAll(menuItems); // 리스트로 한번에 들어온 값을 menuItemList 추가
     }
 
     // 기능
@@ -29,21 +27,16 @@ public class Menu {
     }
 
     /**
-     * 메뉴 리스트 출력 기능
+     * 메뉴 아이템 리스트 출력 기능
      */
-    public void showSeqMenu(int num) {
-
-        for(int i = 0; i < menuList.size(); i++) {
-            System.out.println((i + 1) + ". " + menuList.get(i).getAll());
+    public void showMenuItemList() { //
+        for(int i = 0; i < menuItemList.size(); i++) {
+            System.out.println((i + 1) + ". " + menuItemList.get(i).getAll());
         }
-        if(num == 0){
-            System.out.println("0. 종료    | 종료");
-        } else {
-            System.out.println("0. 뒤로가기 | 뒤로가기");
-        }
+        System.out.println("0. 뒤로가기 | 뒤로가기");
     }
 
     public List<MenuItem> getMenuList() {
-        return menuList;
+        return menuItemList;
     }
 }

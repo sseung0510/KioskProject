@@ -10,59 +10,63 @@ import java.util.Scanner;
 public class Kiosk {
 
     // 속성
-    private final List<Menu> kioskList;
+    private final List<Menu> menuList; //
     private final Scanner sc = new Scanner(System.in);
 
     // 생성자
-    public Kiosk(List<Menu> menuList) {
-        this.kioskList = menuList;
+    public Kiosk(List<Menu> menuItemList) {
+        this.menuList = menuItemList;
     }
 
     // 기능
-
     /**
      * 메뉴 선택을 처리하는 메서드
      */
     public void start() {
         // 반복문 시작
         while(true) {
-            // List와 Menu 클래스 활용하여 상위 카테고리 메뉴 출력
-            System.out.println();
-            System.out.println("[ 메인 메뉴 ]");
-            kioskList.get(0).showSeqMenu(0);
+            showMenuList(); // 메뉴 조회 메서드
 
-            // 숫자 제외 예외처리 메서드
-            int mainNum = inputNumException();
+            int menuNum = inputNumException(); // 숫자 제외 예외처리 메서드
 
             // 입력 받은 숫자가 올바르다면 인덱스로 활용하여 List에 접근하기
-            if(mainNum == 0) { // 종료
+            if(menuNum == 0) { // 종료
                 break; // 상위 반복문 탈출
-            } else if(mainNum < 0 || mainNum >= kioskList.size()) { // 없는 메뉴 선택시 다시 반복
+            } else if (menuNum < 1 || menuNum > menuList.size()) {
                 System.out.println("없는 메뉴입니다.");
-                continue; // 위로 돌아감
+                continue;
             }
 
             // List<Menu>에 인덱스로 접근하면 Menu만 추출
-            Menu menu = kioskList.get(mainNum); // mainNum이 인덱스
-            System.out.println();
-            System.out.println("[ " + menu.getCategory() + " 메뉴 ]");
-
-            menu.showSeqMenu(1);
+            Menu menu = menuList.get(menuNum - 1);
+            System.out.println("\n[ " + menu.getCategory() + " 메뉴 ]");
+            menu.showMenuItemList();
 
             while(true) {
                 // 숫자 제외 예외처리 메서드
-                int menuNum = inputNumException();
+                int menuItemNum = inputNumException();
 
-                if(menuNum == 0) {
+                if(menuItemNum == 0) {
                     break;
-                } else if(menuNum < 0 || menuNum >= kioskList.size()) {
+                } else if(menuItemNum < 1 || menuItemNum > menuList.size()) {
                     System.out.println("없는 메뉴입니다.");
                     continue;
                 }
-                    MenuItem menuItem = menu.getMenuList().get(menuNum - 1);
-                    System.out.println("선택한 메뉴: " + menuItem.getAll());
+                MenuItem menuItem = menu.getMenuList().get(menuItemNum - 1);
+                System.out.println("선택한 메뉴: " + menuItem.getAll());
             }
         }
+    }
+
+    /**
+     * 메뉴 리스트 조회 기능
+     */
+    public void showMenuList(){
+        System.out.println("\n[ 메인 메뉴 ]");
+        for(int i = 0; i < menuList.size(); i++) {
+            System.out.println((i + 1) + ". " + menuList.get(i).getCategory());
+        }
+        System.out.println("0. 종료    | 종료");
     }
 
     /**
