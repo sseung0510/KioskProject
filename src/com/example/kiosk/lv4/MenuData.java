@@ -8,6 +8,7 @@ import java.util.List;
  * 메뉴 데이터 초기화 기능
  */
 public class MenuData {
+
     // 속성
     private final List<Menu> menuList;
 
