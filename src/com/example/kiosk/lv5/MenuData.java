@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * 메뉴 데이터 초기화 기능
+ * 메뉴 데이터 초기화 클래스
  */
 public class MenuData {
 
@@ -14,22 +14,15 @@ public class MenuData {
 
     // 생성자
     public MenuData() {
-        menuList = selectData(); // selectData의 리스트를 menuList에 대입
+        menuList = addData(); // addData 리스트를 menuList에 대입
     }
 
     // 기능
     /**
      * 데이터 생성 기능
      */
-    private List<Menu> selectData() {
+    private List<Menu> addData() {
         List<Menu> menuList = new ArrayList<>();
-
-        Menu menu = new Menu("메인"
-                , Arrays.asList(
-                new MenuItem("햄버거"),
-                new MenuItem("음료수"),
-                new MenuItem("디저트"))
-        );
 
         Menu burger = new Menu("햄버거"
                 , Arrays.asList(
@@ -53,7 +46,6 @@ public class MenuData {
                 new MenuItem("아포카토", 5.0, "커피와 어울리는 달달한 아이스크림"))
         );
 
-        menuList.add(menu);
         menuList.add(burger);
         menuList.add(drink);
         menuList.add(dessert);
