@@ -48,7 +48,7 @@ public class Kiosk {
 
                 if(menuItemNum == 0) {
                     break;
-                } else if(menuItemNum < 1 || menuItemNum > menuList.size()) {
+                } else if(menuItemNum < 1 || menuItemNum > menu.getMenuList().size()) {
                     System.out.println("없는 메뉴입니다.");
                     continue;
                 }
